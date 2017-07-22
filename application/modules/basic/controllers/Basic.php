@@ -11,7 +11,7 @@ class Basic extends MY_Controller
 		parent::__construct();
 		$this->load->model('auth/m_auth');
 
-		//$this->load->module(['']);
+		$this->load->module(['vote']);
 		if($this->session->userdata('isLogin') == TRUE)
 		{
 			$email = $this->session->userdata('email');
@@ -35,6 +35,16 @@ class Basic extends MY_Controller
 
 	function election()
 	{
-		$this->template->election_template();
+		$this->vote->get_election();
+	}
+
+	function vote($id=null)
+	{
+		$this->vote->display_vote_candidates($id);
+	}
+
+	function post_votes()
+	{
+		$this->vote->post_vote();
 	}  
 }

@@ -62,11 +62,13 @@ class Auth extends MY_Controller
 
 				if($check <> 0)
 				{
-					$this->session->set_userdata('isLogin', TRUE);
-					$this->session->set_userdata('email',$email);
+					
 					$user_details = $this->m_auth->get_user($email);
 					$user_level = $user_details->user_type;
 					$user_id = $user_details->user_id;
+					$this->session->set_userdata('isLogin', TRUE);
+					$this->session->set_userdata('email',$email);
+					$this->session->set_userdata('user_id',$user_id);
 
 					$this->m_auth->update_ip($user_id, $user_ip);
 

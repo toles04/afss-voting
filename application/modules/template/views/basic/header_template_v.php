@@ -1,33 +1,90 @@
-<!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Starter</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css'); ?>">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <!-- <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> -->
-    <!-- Theme style -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/dist/css/AdminLTE.min.css'); ?>">
-    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
-          page. However, you can choose any other skin. Make sure you
-          apply the skin class to the body tag so the changes take effect.
-    -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/dist/css/skins/skin-blue.min.css'); ?>">
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AFSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<link href="<?php echo base_url('assets/basic/'); ?>css/bootstrap-responsive.css" rel="stylesheet">
+<link href="<?php echo base_url('assets/basic/'); ?>css/style.css" rel="stylesheet">
+<link href="<?php echo base_url('assets/basic/'); ?>color/default.css" rel="stylesheet">
+<link rel="shortcut icon" href="<?php echo base_url('assets/basic/'); ?>img/favicon.ico">
+<script src="<?php echo base_url('assets/basic/'); ?>js/jquery.js"></script>
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
+
+<!-- <link rel="stylesheet" href="<?php// echo base_url('assets/bootstrap/css/bootstrap.min.css'); ?>">
+    <link rel="stylesheet" href="<?php// echo base_url('assets/dist/css/AdminLTE.min.css'); ?>">
+    iCheck
+    <link rel="stylesheet" href="<?php// echo base_url('assets/plugins/iCheck/square/blue.css'); ?>"> -->
+<!-- =======================================================
+    Theme Name: AFSS Alumni
+    Theme URL: https://bootstrapmade.com/AFSS Alumni-free-onepage-bootstrap-theme/
+    Author: BootstrapMade.com
+    Author URL: https://bootstrapmade.com
+<- ======================================================= -->
+
+<script>
+ // $(document).ready(function(){
+    
+    function voteButton(candidate_idx)
+    {
+
+      if (confirm("Are you sure you want this candidate ?"))
+      {
+          $.post('<?php echo base_url('vote/post_vote'); ?>', { user_id: "<?php echo $this->session->userdata('user_id'); ?>", election_id: "<?php echo $election->election_id; ?>", candidate_id: candidate_idx }, function(data){
+
+          $('#response').html(data);
+
+          $('button').hide();
+
+         }).fail(function() 
+         {
+            // just in case posting your form failed
+            alert( "Vote error." );
+        });
+      }
+      else
+      {
+        return false;
+      }
+      return false;
+    }
+
+
+  //});
+</script>
+</head>
+<body>
+<!-- navbar -->
+<div class="navbar-wrapper">
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <!-- Responsive navbar -->
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+        </a>
+        <h1 class="brand"><a href="index.html">Alumni</a></h1>
+        <!-- navigation -->
+        <nav class="pull-right nav-collapse collapse">
+        <ul id="menu-main" class="nav">
+          <li><a title="team" href="<?php echo base_url(); ?>#about">About</a></li>
+          <li><a title="services" href="<?php echo base_url(); ?>#services">Services</a></li>
+          <li><a title="works" href="<?php echo base_url(); ?>#works">Works</a></li>
+          <li><a title="blog" href="<?php echo base_url(); ?>#blog">Blog</a></li>
+          <li><a title="contact" href="<?php echo base_url(); ?>#contact">Contact</a></li>
+          <li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown">Account</a>
+            <ul class="dropdown-menu">
+                  <li><a href="<?php echo base_url('basic/election'); ?>">Election</a></li>
+                  <li><a href="#">Edit Account</a></li>
+                  <li><a href="<?php echo base_url('auth/logout'); ?>">logout</a></li>
+            </ul>
+          </li>
+        </ul>
+        </nav>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Header area -->

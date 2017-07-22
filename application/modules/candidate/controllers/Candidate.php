@@ -90,12 +90,20 @@ class Candidate extends MY_Controller
 		$this->form_validation->set_rules('election', 'Election', 'required');
 		$this->form_validation->set_rules('user', 'User', 'required');
 
+		$election_id = $this->input->post('election');
+	    $user_id = $this->input->post('user');
+
 		$this->form_validation->set_error_delimiters('<span class="error">', '</span>');
 		if ($this->form_validation->run() == FALSE)
 		{
-			$this->admin->elections();	//base_url('admin/addpositions');
-			//$this->session->set_flashdata('msg', '<div class="alert alert-danger text-center small">input error. </div>');
+			$this->admin->candidates();	//base_url('admin/addpositions');
+			$this->session->set_flashdata('msg', '<div class="bg-danger text-center">input error. </div>');
 			//redirect('admin/positions', 'refresh');
+		}
+		elseif($this->m_candidate->candidate_count($election_id, $user_id) > 0)
+		{
+			$this->admin->candidates();	//base_url('admin/addpositions');
+			$this->session->set_flashdata('msg', '<div class="bg-danger text-center">candidate already exists.</div>');
 		}
 		else
 		{

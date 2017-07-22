@@ -1,51 +1,8 @@
-<!DOCTYPE HTML>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<title>AFSS</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="author" content="">
-<link href="<?php echo base_url('assets/basic/'); ?>css/bootstrap-responsive.css" rel="stylesheet">
-<link href="<?php echo base_url('assets/basic/'); ?>css/style.css" rel="stylesheet">
-<link href="<?php echo base_url('assets/basic/'); ?>color/default.css" rel="stylesheet">
-<link rel="shortcut icon" href="<?php echo base_url('assets/basic/'); ?>img/favicon.ico">
-<!-- =======================================================
-    Theme Name: AFSS Alumni
-    Theme URL: https://bootstrapmade.com/AFSS Alumni-free-onepage-bootstrap-theme/
-    Author: BootstrapMade.com
-    Author URL: https://bootstrapmade.com
-======================================================= -->
-</head>
-<body>
-<!-- navbar -->
-<div class="navbar-wrapper">
-  <div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container">
-        <!-- Responsive navbar -->
-        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-        </a>
-        <h1 class="brand"><a href="#">Alumni</a></h1>
-        <!-- navigation -->
-        <nav class="pull-right nav-collapse collapse">
-        <ul id="menu-main" class="nav">
-          <li><a title="team" href="<?php echo base_url(); ?>">Home</a></li>
-          <li><a title="team" href="<?php echo base_url(); ?>#about">About</a></li>
-          <li><a href="<?php echo base_url('login'); ?>">Sign In</a></li>
-          <li><a href="<?php echo base_url('register'); ?>">Sign Up</a></li>
-          <li><a title="contact" href="<?php echo base_url(); ?>#contact">Contact</a></li>
-        </ul>
-        </nav>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Header area -->
+
 <div id="header-wrapper" class="header-slider">
   <header class="clearfix">
-  <div class="logo"><br><br><br><br> <br><br><br><br>
-    <!-- <img src="<?php //echo base_url('assets/basic/'); ?>img/logo-image.png" alt="" /> -->
+  <div class="logo">
+    <img src="<?php echo base_url('assets/basic/'); ?>img/logo-image.png" alt="" />
   </div>
   <div class="container">
     <div class="row">
@@ -54,12 +11,12 @@
           <ul class="slides">
             <li>
             <p class="home-slide-content">
-              <strong>AFSS</strong> Alumni
+              <strong>creative</strong> and passion
             </p>
             </li>
             <li>
             <p class="home-slide-content">
-              Connect with old <strong>Friends</strong>
+              Eat and drink <strong>design</strong>
             </p>
             </li>
             <li>
@@ -544,45 +501,3 @@
   </div>
 </div>
 </section>
-<footer>
-<div class="container">
-  <div class="row">
-    <div class="span6 offset3">
-      <ul class="social-networks">
-        <li><a href="#"><i class="icon-circled icon-bgdark icon-instagram icon-2x"></i></a></li>
-        <li><a href="#"><i class="icon-circled icon-bgdark icon-twitter icon-2x"></i></a></li>
-        <li><a href="#"><i class="icon-circled icon-bgdark icon-dribbble icon-2x"></i></a></li>
-        <li><a href="#"><i class="icon-circled icon-bgdark icon-pinterest icon-2x"></i></a></li>
-      </ul>
-      <p class="copyright">
-        &copy; AFSS Alumni Theme. All rights reserved.
-                <div class="credits">
-                    <!-- 
-                        All the links in the footer should remain intact. 
-                        You can delete the links only if you purchased the pro version.
-                        Licensing information: https://bootstrapmade.com/license/
-                        Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=AFSS Alumni
-                    -->
-                    <a href="https://bootstrapmade.com/">Free Bootstrap Themes</a> by BootstrapMade.com
-                </div>
-      </p>
-    </div>
-  </div>
-</div>
-<!-- ./container -->
-</footer>
-<a href="#" class="scrollup"><i class="icon-angle-up icon-square icon-bgdark icon-2x"></i></a>
-<script src="<?php echo base_url('assets/basic/'); ?>js/jquery.js"></script>
-<script src="<?php echo base_url('assets/basic/'); ?>js/jquery.scrollTo.js"></script>
-<script src="<?php echo base_url('assets/basic/'); ?>js/jquery.nav.js"></script>
-<script src="<?php echo base_url('assets/basic/'); ?>js/jquery.localscroll-1.2.7-min.js"></script>
-<script src="<?php echo base_url('assets/basic/'); ?>js/bootstrap.js"></script>
-<script src="<?php echo base_url('assets/basic/'); ?>js/jquery.prettyPhoto.js"></script>
-<script src="<?php echo base_url('assets/basic/'); ?>js/isotope.js"></script>
-<script src="<?php echo base_url('assets/basic/'); ?>js/jquery.flexslider.js"></script>
-<script src="<?php echo base_url('assets/basic/'); ?>js/inview.js"></script>
-<script src="<?php echo base_url('assets/basic/'); ?>js/animate.js"></script>
-<script src="<?php echo base_url('assets/basic/'); ?>js/validate.js"></script>
-<script src="<?php echo base_url('assets/basic/'); ?>js/custom.js"></script>
-</body>
-</html>

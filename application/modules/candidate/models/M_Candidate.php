@@ -111,6 +111,15 @@ class M_Candidate extends CI_Model
 	}
 
 
+	public function candidate_count($election, $user_id) {
+			$this->db->where('user_id', $user_id);
+			$this->db->where('election_id', $election);
+	        $query = $this->db->get("candidates");
+			return count($query->result());
+
+	}
+
+
 
 
 	// Fetch data according to per_page limit.
