@@ -129,7 +129,7 @@ class Position extends MY_Controller
 				$positions_table .= "<td>{$value->position_description}</td>";
                 $positions_table .= "<td>"
                         . "<a href='".base_url('admin/updatepositions/')."{$value->position_id}'><i class='glyphicon glyphicon-pencil'></i></a></td>"
-                        . "<td><a href='".base_url()."admin/deletepositions/{$value->position_id}'><i class='glyphicon glyphicon-trash'></i></a></td>";
+                        . "<td><a href='#' onclick='deleteConfirm(\"".base_url()."admin/deletepositions/{$value->position_id}\");'><i class='glyphicon glyphicon-trash'></i></a></td>";
 				$positions_table .= "</tr>";
 				$counter +=1;
 			}

@@ -143,7 +143,7 @@ class Candidate extends MY_Controller
 				$candidates_table .= "<td><span class='badge bg-green'>{$count_vote}</span></td>";
                 $candidates_table .= "<td>"
                         . "<a href='".base_url('admin/updatecandidates/')."{$value->candidate_id}'><i class='glyphicon glyphicon-pencil'></i></a></td>"
-                        . "<td><a href='".base_url()."admin/deletecandidates/{$value->candidate_id}'><i class='glyphicon glyphicon-trash'></i></a></td>";
+                        . "<td><a href='#' onclick='deleteConfirm(\"".base_url()."admin/deletecandidates/{$value->candidate_id}\");'><i class='glyphicon glyphicon-trash'></i></a></td>";
 				$candidates_table .= "</tr>";
 				$counter +=1;
 			}

@@ -101,7 +101,7 @@ class User extends MY_Controller
 				$users_table .= "<td>{$value->user_active}</td>";
                 $users_table .= "<td>"
                         . "<a href='".base_url('admin/updateusers/')."{$value->user_id}'><i class='glyphicon glyphicon-pencil'></i></a></td>"
-                        . "<td><a href='".base_url()."admin/deleteusers/{$value->user_id}'><i class='glyphicon glyphicon-trash'></i></a></td>";
+                        . "<td><a href='#' onclick='deleteConfirm(\"".base_url()."admin/deleteusers/{$value->user_id}\");'><a href=''><i class='glyphicon glyphicon-trash'></i></a></td>";
 				$users_table .= "</tr>";
 				$counter +=1;
 			}

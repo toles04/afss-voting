@@ -136,7 +136,7 @@ class Election extends MY_Controller
 				$elections_table .= "<td>{$value->end_date}</td>";
                 $elections_table .= "<td>"
                         . "<a href='".base_url('admin/updateelections/')."{$value->election_id}'><i class='glyphicon glyphicon-pencil'></i></a></td>"
-                        . "<td><a href='".base_url()."admin/deleteelections/{$value->election_id}'><i class='glyphicon glyphicon-trash'></i></a></td>";
+                        . "<td><a href='#' onclick='deleteConfirm(\"".base_url()."admin/deleteelections/{$value->election_id}\");'><i class='glyphicon glyphicon-trash'></i></a></td>";
 				$elections_table .= "</tr>";
 				$counter +=1;
 			}
