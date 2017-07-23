@@ -11,6 +11,12 @@
 <link href="<?php echo base_url('assets/basic/'); ?>color/default.css" rel="stylesheet">
 <link rel="shortcut icon" href="<?php echo base_url('assets/basic/'); ?>img/favicon.ico">
 <script src="<?php echo base_url('assets/basic/'); ?>js/jquery.js"></script>
+<style type="text/css">
+
+  .dark-link a:link,a:visited,a:active{
+    color: #023d5f ;
+}
+</style>
 
 
 <!-- <link rel="stylesheet" href="<?php// echo base_url('assets/bootstrap/css/bootstrap.min.css'); ?>">
@@ -24,36 +30,7 @@
     Author URL: https://bootstrapmade.com
 <- ======================================================= -->
 
-<script>
- // $(document).ready(function(){
-    
-    function voteButton(candidate_idx)
-    {
 
-      if (confirm("Are you sure you want this candidate ?"))
-      {
-          $.post('<?php echo base_url('vote/post_vote'); ?>', { user_id: "<?php echo $this->session->userdata('user_id'); ?>", election_id: "<?php echo $election->election_id; ?>", candidate_id: candidate_idx }, function(data){
-
-          $('#response').html(data);
-
-          $('button').hide();
-
-         }).fail(function() 
-         {
-            // just in case posting your form failed
-            alert( "Vote error." );
-        });
-      }
-      else
-      {
-        return false;
-      }
-      return false;
-    }
-
-
-  //});
-</script>
 </head>
 <body>
 <!-- navbar -->
@@ -64,7 +41,7 @@
         <!-- Responsive navbar -->
         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
         </a>
-        <h1 class="brand"><a href="index.html">Alumni</a></h1>
+        <span class="brand"><a href="<?php echo base_url(); ?>">Alumni</a></span>
         <!-- navigation -->
         <nav class="pull-right nav-collapse collapse">
         <ul id="menu-main" class="nav">
@@ -76,12 +53,14 @@
           <li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown">Account</a>
             <ul class="dropdown-menu">
                   <li><a href="<?php echo base_url('basic/election'); ?>">Election</a></li>
-                  <li><a href="#">Edit Account</a></li>
+                  <li><a href="<?php echo base_url('basic/edit_user'); ?>">Edit Account</a></li>
                   <li><a href="<?php echo base_url('auth/logout'); ?>">logout</a></li>
             </ul>
           </li>
         </ul>
+        <span class="brand"><img class ="img-circle" width="30px" src="<?php echo  $user_image;?>"></span>
         </nav>
+
 
       </div>
     </div>

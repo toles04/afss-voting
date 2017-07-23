@@ -37,6 +37,20 @@ class Template extends MY_Controller
 		$this->load->view('basic/footer_template_v', $data);
 	}
 
+	public function  edit_basic_template($data = NULL)
+	{
+		$this->load->view('basic/header_template_v', $data);
+		$this->load->view('basic/edit_template_v', $data);
+		$this->load->view('basic/footer_template_v', $data);
+	}
+
+	public function  edit_admin_template($data = NULL)
+	{
+		$this->load->view('basic/header_template_v', $data);
+		$this->load->view('auth/register_template_v', $data);
+		$this->load->view('basic/footer_template_v', $data);
+	}
+
 	public function  welcome_template($data = NULL)
 	{
 		$this->load->view('auth/header_template_v', $data);

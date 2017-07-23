@@ -21,8 +21,8 @@
     <table class="table table-striped table-bordered">
      <tr>
       <th>Title</th>
-      <th>Status</th>
-      <th>Actions</th>
+      <th>Start</th>
+      <th>End</th>
     </tr>
       <?php 
                 echo $elections_table;

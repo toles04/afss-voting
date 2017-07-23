@@ -30,12 +30,13 @@ class Vote extends MY_Controller
 		}
 	}
 
-	public function display_vote_candidates($election_id)
+	public function display_vote_candidates($election_id, $val)
 	{
 		$user_id = $this->session->userdata('user_id');
 		$data['vote_candidates'] = $this->m_vote->get_election_candidates($election_id);
 		$data['election'] = $this->m_vote->get_election($election_id);
 		$data['status'] = $this->m_vote->check_status($user_id, $election_id);
+		$data['user_image'] = $val;
 		$this->template->vote_template($data);
 	}
 
@@ -66,9 +67,10 @@ class Vote extends MY_Controller
 		//echo "hello world".$user_id." ".$election_id." ".$candidate_id;
 	}
 
-	public function get_election()
+	public function get_election($val)
 	{
 		$data['elections_table'] = $this->get();
+		$data['user_image'] = $val;
 		$this->template->election_template($data);
 	}
 
@@ -85,11 +87,11 @@ class Vote extends MY_Controller
 				$election_id = $value->election_id;
 				$title = $value->election_title;
 				$status = $value->status;
-				if($status == "active"){ $title = "<a href='".base_url('basic/vote')."/{$election_id}'>$title</a>";}
+				if($status == "active"){ $title = "<span class='dark-link'><a href='".base_url('basic/vote')."/{$election_id}'>$title</a></span>";}
 				$elections_table .= "<tr>";
-				$elections_table .= "<td>{$title}</td>";
-				$elections_table .= "<td>{$value->start_date}</td>";
-				$elections_table .= "<td>{$value->end_date}</td>";
+				$elections_table .= "<td><b>{$title}</b></td>";
+				$elections_table .= "<td><b>{$value->start_date}</b></td>";
+				$elections_table .= "<td><b>{$value->end_date}</b></td>";
 				$elections_table .= "</tr>";	
 			}
 		}

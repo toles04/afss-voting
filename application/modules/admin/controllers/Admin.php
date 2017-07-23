@@ -22,7 +22,14 @@ class Admin extends MY_Controller
 		if($this->session->userdata('isLogin') == TRUE)
 		{
 			$email = $this->session->userdata('email');
+			$deleted = $this->m_auth->get_user($email)->deleted;
+			$user_active = $this->m_auth->get_user($email)->user_active;
 			$user_level = $this->m_auth->get_user($email)->user_type;
+			if ($deleted == '1' || $user_active == '0')
+			{
+				redirect(base_url('auth/logout'));
+			}
+			
 			if ($user_level != 'admin')
 			{
 				redirect(base_url('basic'));

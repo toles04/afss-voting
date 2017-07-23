@@ -277,6 +277,7 @@ h2.pagetitle {
 .navbar-fixed-top .container {
 /* Uncomment to make nav expand full width */
  /*	width: auto; */
+ height: 60px;
 }
 .navbar .brand {
 	margin-left:0;

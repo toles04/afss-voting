@@ -104,7 +104,7 @@ class M_Auth extends CI_Model
     function add_user_images($user_images)
 	{
 		$this->db->set($user_images);
-		$this->db->update('user_images');
+		$this->db->insert('user_images');
 	}
 
     

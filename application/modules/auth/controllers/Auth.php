@@ -139,60 +139,43 @@ class Auth extends MY_Controller
 
 				
 
-					$id =  $this->m_auth->register($data);
-
-						$this->load->library('upload');
+				$id =  $this->m_auth->register($data);
+				$this->load->library('upload');
 				$files = $_FILES;
 				$images = count($_FILES['user_images']['name']);
 				$images_array = [];
-					
+				
+				$this->upload->initialize($this->set_upload_option());
 
-				/*for ($i=0; $i < $images; $i++) 
-				{ 
-					# code...
-					$_FILES['user_images']['name'] = $files['user_images']['name'][$i];
-					$_FILES['user_images']['type'] = $files['user_images']['type'][$i];
-					$_FILES['user_images']['tmp_name'] = $files['user_images']['tmp_name'][$i];
-					$_FILES['user_images']['error'] = $files['user_images']['error'][$i];
-					$_FILES['user_images']['size'] = $files['user_images']['size'][$i];*/
-					
-					$this->upload->initialize($this->set_upload_option());
+				if (!$this->upload->do_upload('user_images'))
+				{
+					$error = array('error' => $this->upload->display_errors());
+				}
+				else
+				{
+					$images_array = [
+						'image_path' => base_url()."uploads/users/".$_FILES['user_images']['name'],
+						'user_id' => $id
+					];
+				}
 
-					if (!$this->upload->do_upload('user_images'))
-					{
-						$error = array('error' => $this->upload->display_errors());
-					}
-					else
-					{
-						$images_array = [
-							'image_path' => base_url()."uploads/users/".$_FILES['user_images']['name'],
-							'user_id' => $id
-						];
-					}
-
-					if(!$images_array == "")
-					{
-						$this->m_auth->add_user_images($images_array);
-					}
-
-					//}
+				if(!$images_array == "")
+				{
+					$this->m_auth->add_user_images($images_array);
+				}
 
 
-
-					if($this->m_auth->sendEmail($this->input->post('email')))
-					{
-	                    //redirect('Login_Controller/index');
-	                    //$msg = "Successfully registered with the sysytem.Conformation link has been sent to: ".$this->input->post('txt_email');
-	                    $this->session->set_flashdata('msg', '<div class="bg-success text-center">Successfully registered. Please confirm the mail that has been sent to your email. </div>');
-	                    $this->home->login();
-	                }
-	                else
-	                { 
-	                    //$error = "Error, Cannot insert new user details!";
-	                    $this->session->set_flashdata('msg', '<div class="bg-danger text-center">Failed!! Please try again.</div>');
-	                    $this->home->register();
-	                }
-			
+				if($this->m_auth->sendEmail($this->input->post('email')))
+				{
+                    $this->session->set_flashdata('msg', '<div class="bg-success text-center">Successfully registered. Please confirm the mail that has been sent to your email. </div>');
+                    $this->home->login();
+                }
+                else
+                { 
+                    $this->session->set_flashdata('msg', '<div class="bg-danger text-center">Failed!! Please try again.</div>');
+                    $this->home->register();
+                }
+		
 			}
 		}
 		else
@@ -230,7 +213,7 @@ class Auth extends MY_Controller
 	{
 		# code...
 		$this->session->sess_destroy();
-		redirect(base_url());
+		redirect(base_url('login'));
 
 	}
 

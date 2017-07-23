@@ -1,4 +1,32 @@
+<script>
+ // $(document).ready(function(){
+    
+    function voteButton(candidate_idx)
+    {
 
+      if (confirm("Are you sure you want this candidate ?"))
+      {
+          $.post('<?php echo base_url('vote/post_vote'); ?>', { user_id: "<?php echo $this->session->userdata('user_id'); ?>", election_id: "<?php echo $election->election_id; ?>", candidate_id: candidate_idx }, function(data){
+
+          $('#response').html(data);
+
+          $('button').hide();
+
+         }).fail(function() 
+         {
+            // just in case posting your form failed
+            alert( "Vote error." );
+        });
+      }
+      else
+      {
+        return false;
+      }
+      return false;
+    }
+
+  //});
+</script>
 <section class="spacer green">
   <div class="container">
     <div class="row">
@@ -41,7 +69,7 @@
               <span class="tags">
                 <?php if (!$status)
                 { ?>
-              <a href="#"><button class="btn btn-primary" id ="voteBtn" onclick="voteButton(<?php  echo $value->candidate_id; ?>);"><i class="icon-ok icon-1x"> vote</i></button></a>
+              <button class="btn btn-primary" id ="voteBtn" onclick="voteButton(<?php  echo $value->candidate_id; ?>);"><i class="icon-ok icon-1x"> vote</i></button>
               <?php
               }
 
